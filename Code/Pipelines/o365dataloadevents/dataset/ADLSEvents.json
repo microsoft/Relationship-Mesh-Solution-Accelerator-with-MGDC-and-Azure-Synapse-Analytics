@@ -1,0 +1,19 @@
+{
+    "name": "ADLSEvents",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "AzureDataLakeStorageSPN",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Binary",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "folderPath": "o365data/events",
+                "fileSystem": "relmeshadlsfs"
+            }
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,16 @@
+{
+    "name": "Office365Events",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "Office365",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Office365Table",
+        "schema": [],
+        "typeProperties": {
+            "tableName": "BasicDataSet_v0.Event_v0"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

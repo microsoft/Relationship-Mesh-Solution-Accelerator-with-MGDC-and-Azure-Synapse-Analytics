@@ -1,0 +1,133 @@
+{
+    "name": "o365dataloadmessages",
+    "properties": {
+        "activities": [
+            {
+                "name": "loadmessages",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "Office365Source",
+                        "dateFilterColumn": "CreatedDateTime",
+                        "startTime": "2020-12-31T00:00:00Z",
+                        "endTime": "2022-01-31T00:00:00Z",
+                        "allowedGroups": [
+                            "<allowed-group-security-group>"
+                        ],
+                        "outputColumns": [
+                            {
+                                "name": "ReceivedDateTime"
+                            },
+                            {
+                                "name": "SentDateTime"
+                            },
+                            {
+                                "name": "HasAttachments"
+                            },
+                            {
+                                "name": "InternetMessageId"
+                            },
+                            {
+                                "name": "Subject"
+                            },
+                            {
+                                "name": "Importance"
+                            },
+                            {
+                                "name": "ParentFolderId"
+                            },
+                            {
+                                "name": "Sender"
+                            },
+                            {
+                                "name": "From"
+                            },
+                            {
+                                "name": "ToRecipients"
+                            },
+                            {
+                                "name": "CcRecipients"
+                            },
+                            {
+                                "name": "BccRecipients"
+                            },
+                            {
+                                "name": "ReplyTo"
+                            },
+                            {
+                                "name": "ConversationId"
+                            },
+                            {
+                                "name": "UniqueBody"
+                            },
+                            {
+                                "name": "IsDeliveryReceiptRequested"
+                            },
+                            {
+                                "name": "IsReadReceiptRequested"
+                            },
+                            {
+                                "name": "IsRead"
+                            },
+                            {
+                                "name": "IsDraft"
+                            },
+                            {
+                                "name": "WebLink"
+                            },
+                            {
+                                "name": "CreatedDateTime"
+                            },
+                            {
+                                "name": "LastModifiedDateTime"
+                            },
+                            {
+                                "name": "ChangeKey"
+                            },
+                            {
+                                "name": "Categories"
+                            },
+                            {
+                                "name": "Id"
+                            },
+                            {
+                                "name": "Attachments"
+                            }
+                        ]
+                    },
+                    "sink": {
+                        "type": "BinarySink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings"
+                        }
+                    },
+                    "enableStaging": false
+                },
+                "inputs": [
+                    {
+                        "referenceName": "Office365Messages",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "ADLSMessages",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2022-01-21T20:15:23Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

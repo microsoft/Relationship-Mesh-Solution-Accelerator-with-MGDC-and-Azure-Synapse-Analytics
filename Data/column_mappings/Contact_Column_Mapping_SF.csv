@@ -1,0 +1,9 @@
+SAColumn,SFColumn
+FirstName,FirstName
+LastName,LastName
+Name,Name
+Email,Email
+Id,Id
+AccountId,AccountId
+Title,Title
+ContactType__c,ContactType__c

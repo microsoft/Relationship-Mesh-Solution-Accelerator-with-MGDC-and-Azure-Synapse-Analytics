@@ -1,0 +1,19 @@
+{
+    "name": "ADLSMessages",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "AzureDataLakeStorageSPN",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Binary",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "folderPath": "o365data/messages",
+                "fileSystem": "relmeshadlsfs"
+            }
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,16 @@
+{
+    "name": "SalesforceContact",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "Salesforce",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "SalesforceObject",
+        "schema": [],
+        "typeProperties": {
+            "objectApiName": "Contact"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

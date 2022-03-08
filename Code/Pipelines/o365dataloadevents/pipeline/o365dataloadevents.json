@@ -1,0 +1,145 @@
+{
+    "name": "o365dataloadevents",
+    "properties": {
+        "activities": [
+            {
+                "name": "loadevents",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "Office365Source",
+                        "dateFilterColumn": "CreatedDateTime",
+                        "startTime": "2022-01-01T00:00:00Z",
+                        "endTime": "2022-02-01T00:00:00Z",
+                        "allowedGroups": [
+                            "<allowed-group-security-group-id>"
+                        ],
+                        "outputColumns": [
+                            {
+                                "name": "Id"
+                            },
+                            {
+                                "name": "CreatedDateTime"
+                            },
+                            {
+                                "name": "LastModifiedDateTime"
+                            },
+                            {
+                                "name": "ChangeKey"
+                            },
+                            {
+                                "name": "Categories"
+                            },
+                            {
+                                "name": "OriginalStartTimeZone"
+                            },
+                            {
+                                "name": "OriginalEndTimeZone"
+                            },
+                            {
+                                "name": "ResponseStatus"
+                            },
+                            {
+                                "name": "iCalUId"
+                            },
+                            {
+                                "name": "ReminderMinutesBeforeStart"
+                            },
+                            {
+                                "name": "IsReminderOn"
+                            },
+                            {
+                                "name": "HasAttachments"
+                            },
+                            {
+                                "name": "Subject"
+                            },
+                            {
+                                "name": "Body"
+                            },
+                            {
+                                "name": "Importance"
+                            },
+                            {
+                                "name": "Sensitivity"
+                            },
+                            {
+                                "name": "Start"
+                            },
+                            {
+                                "name": "End"
+                            },
+                            {
+                                "name": "Location"
+                            },
+                            {
+                                "name": "IsAllDay"
+                            },
+                            {
+                                "name": "IsCancelled"
+                            },
+                            {
+                                "name": "IsOrganizer"
+                            },
+                            {
+                                "name": "Recurrence"
+                            },
+                            {
+                                "name": "ResponseRequested"
+                            },
+                            {
+                                "name": "ShowAs"
+                            },
+                            {
+                                "name": "Type"
+                            },
+                            {
+                                "name": "Attendees"
+                            },
+                            {
+                                "name": "Organizer"
+                            },
+                            {
+                                "name": "WebLink"
+                            },
+                            {
+                                "name": "Attachments"
+                            }
+                        ]
+                    },
+                    "sink": {
+                        "type": "BinarySink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings"
+                        }
+                    },
+                    "enableStaging": false
+                },
+                "inputs": [
+                    {
+                        "referenceName": "Office365Events",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "ADLSEvents",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2022-01-25T21:09:07Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

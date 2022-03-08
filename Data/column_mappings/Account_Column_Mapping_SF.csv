@@ -1,0 +1,11 @@
+SAColumn,SFColumn
+Name,Name
+DomainName,Website
+ParentAccount,ParentId
+PrimaryContact,PrimaryContact__c
+Sector,Sector__c
+TransactionSize,AnnualRevenue
+Tier,Tier__c
+Industry,Industry
+Id,Id
+Type,Type
