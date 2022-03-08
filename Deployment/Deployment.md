@@ -1,7 +1,6 @@
 # Deployment Guide 
 Please follow the steps below to set up the Azure environment
 
-
 ## Step 1: Download Files
 Clone or download this repository and navigate to the project's root directory.
 
