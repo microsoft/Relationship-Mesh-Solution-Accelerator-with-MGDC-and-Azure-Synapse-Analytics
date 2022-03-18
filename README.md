@@ -17,7 +17,6 @@ This solution accelerator helps developers with all the resources needed to buil
 
 ![SA Introduction](./Deployment/img/SAIntroduction.png) 
 
-
 ## Prerequisites
 To use this solution accelerator, you will need access to an [Azure subscription](https://azure.microsoft.com/free/), Microsoft 365 account and Microsoft Graph Data Connect(MGDC) enabled. If you do not have this please follow the [Prerequisites Guide](./Deployment/Prerequisites.md). While not required, a prior understanding of Microsoft Graph Data Connect, Azure Synapse Analytics and Machine Learning will be helpful.
 
