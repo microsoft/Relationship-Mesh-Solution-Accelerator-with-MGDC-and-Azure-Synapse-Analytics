@@ -1,6 +1,7 @@
 # Deployment Guide 
 Please follow the steps below to set up the Azure environment
 
+
 ## Step 1: Download Files
 Clone or download this repository and navigate to the project's root directory.
 
@@ -135,10 +136,10 @@ az synapse pipeline create --workspace-name $synapse_name --name o365dataloadeve
 6. Select the container named `relmeshadlsfs (Primary)`, select "New folder", enter `salesforcedata` and select "Create"
     * In the `salesforcedata` folder, select "New folder", enter `account` and select "Create"
         * In the `account` folder, select `Upload` to upload the following sample datasets in the [account folder](https://github.com/microsoft/Relationship-Mesh-Solution-Accelerator-with-MGDC-and-Azure-Synapse-Analytics/main/Data/account) of this repository to the `account` folder you created: 
-            * `account.csv`
+            * `accounts.csv`
    * In the `salesforcedata` folder, select "New folder", enter `contact` and select "Create"
         * In the `contact` folder, select `Upload` to upload the following sample datasets in the [contact folder](https://github.com/microsoft/Relationship-Mesh-Solution-Accelerator-with-MGDC-and-Azure-Synapse-Analytics/main/Data/contact) of this repository to the `contact` folder you created: 
-            * `contact.csv`
+            * `contacts.csv`
 7. Select the container named `relmeshadlsfs (Primary)`, select "New folder", enter `o365data` and select "Create"
     * In the `o365data` folder, select "New folder", enter `events` and select "Create"
         * In the `events` folder, select `Upload` to upload the following sample datasets in the [events folder](https://github.com/microsoft/Relationship-Mesh-Solution-Accelerator-with-MGDC-and-Azure-Synapse-Analytics/main/Data/o365data/events) of this repository to the `events` folder you created: 
