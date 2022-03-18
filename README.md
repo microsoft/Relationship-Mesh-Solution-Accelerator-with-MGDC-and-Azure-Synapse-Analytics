@@ -1,6 +1,16 @@
+---
+page_type: sample
+languages:
+- python
+products:
+- azure-synapse-analytics
+- microsoft-graph-data-connect-api
+- power-bi
+---
+
 ![Relationship Mesh](./Deployment/img/RelationshipMeshSA.png)
 
-## About this Repository
+# Relationship Mesh Solution Accelerator with Microsoft Graph Data Connect and Azure Synapse Analytics
 Building strong relationships with customers is very important to improve customer retention, loyalty and revenue. Insights about the strength of relationship with customers and their key contacts will enable the teams to take required actions to manage and improve the interactions at different stages in a customer engagement life cycle.
 
 This solution accelerator helps developers with all the resources needed to build a Relationship Mesh Solution that gives a summary view of all the key accounts and also a detailed view of interactions at individual account level.
