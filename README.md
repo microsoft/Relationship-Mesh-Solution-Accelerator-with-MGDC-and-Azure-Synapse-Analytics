@@ -18,7 +18,7 @@ This solution accelerator helps developers with all the resources needed to buil
 ![SA Introduction](./Deployment/img/SAIntroduction.png) 
 
 ## Prerequisites
-To use this solution accelerator, you will need access to an [Azure subscription](https://azure.microsoft.com/free/), Microsoft 365 account and Microsoft Graph Data Connect(MGDC) enabled. If you do not have this please follow the [Prerequisites Guide](./Deployment/Prerequisites.md). While not required, a prior understanding of Microsoft Graph Data Connect, Azure Synapse Analytics and Machine Learning will be helpful.
+To use this solution accelerator, you will need access to an [Azure subscription](https://azure.microsoft.com/free/), Microsoft 365 account and Microsoft Graph Data Connect(MGDC) enabled. If you do not have this please follow the [Prerequisites Guide](./Deployment/Prerequisites.md). While not required, a prior understanding of Microsoft Graph Data Connect, and Azure Synapse Analytics will be helpful.
 
 For additional training and support, please see:
 
@@ -27,7 +27,7 @@ For additional training and support, please see:
 3. [Power BI](https://docs.microsoft.com/en-us/power-bi/)
 
 ## Getting Started
-Start by deploying the required resources to Azure. The button below will deploy Azure Synapse Analytics, Azure Machine Learning and its related resources:
+Start by deploying the required resources to Azure. The button below will deploy Azure Synapse Analytics, Azure Data Lake Storage, Azure Key Vault and its related resources:
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FRelationship-Mesh-Solution-Accelerator-with-MGDC-and-Azure-Synapse-Analytics%2Fmain%2FDeployment%2Fdeploy.json)
 
@@ -73,7 +73,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE
 
 ## Note about Libraries with MPL-2.0 and LGPL-2.1 Licenses   
-The following libraries are not **explicitly included** in this repository, but users who use this Solution Accelerator may need to install them locally and in Azure Synapse and Azure Machine Learning to fully utilize this Solution Accelerator. However, the actual binaries and files associated with the libraries **are not included** as part of this repository, but they are available for installation via the PyPI library using the pip installation tool.  
+The following libraries are not **explicitly included** in this repository, but users who use this Solution Accelerator may need to install them locally and in Azure Synapse to fully utilize this Solution Accelerator. However, the actual binaries and files associated with the libraries **are not included** as part of this repository, but they are available for installation via the PyPI library using the pip installation tool.  
   
 Libraries: chardet, certifi
 
