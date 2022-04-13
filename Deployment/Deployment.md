@@ -37,7 +37,7 @@ In order to perform the necessary actions in Synapse workspace, you will need to
 1. Go to the Azure Data Lake Storage Account for your Synapse Workspace
 2. Go to the `Access Control (IAM) > + Add > Add role assignment` 
 3. Now search and select the `Storage Blob Data Contributor` role and click "Next" 
-4. Click "+ Select members", search and select your username and click "Select" 
+4. Click "+ Select members", search and select your username and your adls-spn created in previous steps and click "Select" 
 5. Click `Review and assign` at the bottom
 
 [Learn more](https://docs.microsoft.com/azure/synapse-analytics/security/how-to-set-up-access-control)
@@ -60,6 +60,7 @@ In order to perform the necessary actions in Synapse workspace, you will need to
 12. Click "Test connection" and click "Save" 
 13. Click `+ New`, select `Salesforce`, provide your `username`, `password` and `Security token` for your Salesforce account
 16. Click "Test connection" and click "Save" 
+17. Publish all changes
 
 
 ### Step 3.2: Update O365 Data Load Messages Pipeline Parameters 
@@ -72,57 +73,62 @@ git clone https://github.com/microsoft/Relationship-Mesh-Solution-Accelerator-wi
 2. In the following command replace `<Synapse-workspace-name>` with the name of your Synapse workspace you are using for this solution and run the command
 ```
 synapse_name=<Synapse-workspace-name>
+
+cd Relationship-Mesh-Solution-Accelerator-with-MGDC-and-Azure-Synapse-Analytics
 ```
 3. The following commands will create the dataset connections and pipeline for your Salesforce account in your Synapse workspace. Run each command in the cloud shell 
 > **Note**: if you are not using a Salesforce account, you can skip this step and move to the Office 365 pipelines
 
 ```
-sed -i "s/<synapseworkspacename>/$synapse_name/g" ../Code/Pipelines/SalesforceDataPipeline/dataset/SalesforceAccountADLS.json 
+sed -i "s/<synapseworkspacename>/$synapse_name/g" Code/Pipelines/SalesforceDataPipeline/dataset/SalesforceAccountADLS.json 
 
-sed -i "s/<synapseworkspacename>/$synapse_name/g" ../Code/Pipelines/SalesforceDataPipeline/dataset/SalesforceContactADLS.json 
+sed -i "s/<synapseworkspacename>/$synapse_name/g" Code/Pipelines/SalesforceDataPipeline/dataset/SalesforceContactADLS.json 
 
-az synapse dataset create --workspace-name $synapse_name --name SalesforceAccount --file @SalesforceAccount.json
+az synapse dataset create --workspace-name $synapse_name --name SalesforceAccount --file @Code/Pipelines/SalesforceDataPipeline/dataset/SalesforceAccount.json
 
-az synapse dataset create --workspace-name $synapse_name --name SalesforceAccountADLS --file @SalesforceAccountADLS.json
+az synapse dataset create --workspace-name $synapse_name --name SalesforceAccountADLS --file @Code/Pipelines/SalesforceDataPipeline/dataset/SalesforceAccountADLS.json
 
-az synapse dataset create --workspace-name $synapse_name --name SalesforceContact --file @SalesforceContact.json
+az synapse dataset create --workspace-name $synapse_name --name SalesforceContact --file @Code/Pipelines/SalesforceDataPipeline/dataset/SalesforceContact.json
 
-az synapse dataset create --workspace-name $synapse_name --name SalesforceContactADLS --file @SalesforceContactADLS.json
+az synapse dataset create --workspace-name $synapse_name --name SalesforceContactADLS --file @Code/Pipelines/SalesforceDataPipeline/dataset/SalesforceContactADLS.json
 
-az synapse pipeline create --workspace-name $synapse_name --name SalesforceDataPipeline --file @SalesforceDataPipeline.json
+az synapse pipeline create --workspace-name $synapse_name --name SalesforceDataPipeline --file @Code/Pipelines/SalesforceDataPipeline/pipeline/SalesforceDataPipeline.json
 ```
-4. In the following command replace `<allowed-group-security-group>` with the name of your security group for the users you will pull Office 365 data for that was created in [Step 3 of the Prerequisites](./Prerequisites.md) and run the command
+4. In the following command replace `<allowed-group-security-group-id>` with the id of your security group for the users you will pull Office 365 data for that was created in [Step 3 of the Prerequisites](./Prerequisites.md) and run the command 
+    > Go to Azure Active Directory in the portal and search for the security group name for the allowed users group and copy the Object Id
 ```
-allowed_group=<allowed-group-security-group>
+allowed_group=<allowed-group-security-group-id>
 ```
 5. The following commands will create the dataset connections and pipeline for your Office 365 account in your Synapse workspace. Run each command in the cloud shell 
 
 
 ```
-sed -i "s/<allowed-group-security-group>/$allowed_group/g" ../Code/Pipelines/o365dataloadmessages/pipeline/o365dataloadmessages.json 
+sed -i "s/<allowed-group-security-group-id>/$allowed_group/g" Code/Pipelines/o365dataloadmessages/pipeline/o365dataloadmessages.json 
 
-az synapse dataset create --workspace-name $synapse_name --name ADLSMessages --file @ADLSMessages.json
+az synapse dataset create --workspace-name $synapse_name --name ADLSMessages --file @Code/Pipelines/o365dataloadmessages/dataset/ADLSMessages.json
 
-az synapse dataset create --workspace-name $synapse_name --name Office365Messages --file @Office365Messages.json
+az synapse dataset create --workspace-name $synapse_name --name Office365Messages --file @Code/Pipelines/o365dataloadmessages/dataset/Office365Messages.json
 
-az synapse pipeline create --workspace-name $synapse_name --name o365dataloadmessages --file @o365dataloadmessages.json
+az synapse pipeline create --workspace-name $synapse_name --name o365dataloadmessages --file @Code/Pipelines/o365dataloadmessages/pipeline/o365dataloadmessages.json
 
-sed -i "s/<allowed-group-security-group>/$allowed_group/g" ../Code/Pipelines/o365dataloadevents/pipeline/o365dataloadevents.json 
+sed -i "s/<allowed-group-security-group-id>/$allowed_group/g" Code/Pipelines/o365dataloadevents/pipeline/o365dataloadevents.json 
 
-az synapse dataset create --workspace-name $synapse_name --name ADLSEvents --file @ADLSEvents.json
+az synapse dataset create --workspace-name $synapse_name --name ADLSEvents --file @Code/Pipelines/o365dataloadevents/dataset/ADLSEvents.json
 
-az synapse dataset create --workspace-name $synapse_name --name Office365Events --file @Office365Events.json
+az synapse dataset create --workspace-name $synapse_name --name Office365Events --file @Code/Pipelines/o365dataloadevents/dataset/Office365Events.json
 
-az synapse pipeline create --workspace-name $synapse_name --name o365dataloadevents --file @o365dataloadevents.json
+az synapse pipeline create --workspace-name $synapse_name --name o365dataloadevents --file @Code/Pipelines/o365dataloadevents/pipeline/o365dataloadevents.json
 ```
 
 
 ### Step 3.3: Run the Pipelines 
 1. Launch the Synapse workspace [Synapse Workspace](https://ms.web.azuresynapse.net/)
 2. Select the `subscription` and `workspace` name you are using for this solution accelerator
-3. Select the `Integrate` hub and click on the `o365dataloadevents` pipeline
+3. Select the `Integrate` hub and click on the `SalesforceDataPipeline` pipeline
 4. Select `Add trigger` and click `Trigger now`
-5. Repeat step 4 for the `o365dataloadmessages` pipeline and the `SalesforceDataPipeline` pipeline
+5. Trigger the `o365dataloadmessages` pipeline and the `o365dataloadevents` pipeline
+6. Once the pipeline runs have started, ask one of your admins to approve the requests from the [Microsoft 365 Admin Portal](https://portal.office.com/adminportal/home#/Settings/PrivilegedAccess) Privileged access requests, select the request, and click "Approve" 
+
 
 
 # Step 4: Upload Sample Dataset

@@ -21,7 +21,7 @@
                         "startTime": "2020-12-31T00:00:00Z",
                         "endTime": "2022-01-31T00:00:00Z",
                         "allowedGroups": [
-                            "<allowed-group-security-group>"
+                            "<allowed-group-security-group-id>"
                         ],
                         "outputColumns": [
                             {
