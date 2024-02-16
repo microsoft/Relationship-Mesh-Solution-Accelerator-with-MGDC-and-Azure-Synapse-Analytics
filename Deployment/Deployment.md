@@ -95,7 +95,7 @@ az synapse dataset create --workspace-name $synapse_name --name SalesforceContac
 az synapse pipeline create --workspace-name $synapse_name --name SalesforceDataPipeline --file @Code/Pipelines/SalesforceDataPipeline/pipeline/SalesforceDataPipeline.json
 ```
 4. In the following command replace `<allowed-group-security-group-id>` with the id of your security group for the users you will pull Office 365 data for that was created in [Step 3 of the Prerequisites](./Prerequisites.md) and run the command 
-    > Go to Azure Active Directory in the portal and search for the security group name for the allowed users group and copy the Object Id
+    > Go to Microsoft Entra ID in the azure portal and search for the security group name for the allowed users group and copy the Object Id
 ```
 allowed_group=<allowed-group-security-group-id>
 ```
