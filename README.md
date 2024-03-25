@@ -4,7 +4,7 @@ languages:
 - python
 products:
 - azure-synapse-analytics
-- microsoft-graph-data-connect-api
+- microsoft-graph-data-connect
 - power-bi
 ---
 
